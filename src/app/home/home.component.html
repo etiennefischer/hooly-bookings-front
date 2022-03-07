@@ -1,0 +1,39 @@
+<div>
+    <div class="submit-form">
+      <div *ngIf="!submitted">
+        <div class="form-group">
+          <h2>Customer</h2>
+          <select [(ngModel)]="booking.customer">
+            <option *ngFor="let customer of customers" [value]="customer.id">
+              {{customer.name}}
+            </option>
+          </select>
+        </div>
+        <div class="form-group">
+          <h2>Spot</h2>
+          <select [(ngModel)]="booking.spot">
+            <option *ngFor="let spot of spots" [value]="spot.id">
+              {{spot.id}}
+            </option>
+          </select>
+        </div>
+        <div class="form-group">
+          <h2>Date</h2>
+            <input
+              class="form-control"
+              type="date"
+              id="date"
+              required
+              [(ngModel)]="booking.bookedAt"
+              name="date"
+            />
+          </div>
+        <button (click)="saveBooking()" class="btn btn-success">Book</button>
+      </div>
+      <div *ngIf="submitted">
+        <h4>Booking submitted</h4>
+        <span *ngIf="errorMsg">{{ errorMsg }}</span>
+        <button class="btn btn-success" (click)="newBooking()">New Booking</button>
+      </div>
+    </div>
+  </div>

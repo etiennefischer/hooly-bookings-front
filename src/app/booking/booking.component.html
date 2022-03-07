@@ -1,0 +1,26 @@
+<div class="list row">
+    <div class="col-md-6">
+      <h4>Customers List</h4>
+      <ul class="list-group">
+        <li
+          class="list-group-item list-group-item-action cursor-pointer"
+          *ngFor="let customer of customers; let i = index"
+          [class.active]="i == currentIndex"
+          (click)="getCustomerBookings(customer.id)"
+        >
+        {{customer.name}}
+        </li>
+      </ul>
+    </div>
+    <div class="col-md-6">
+      <h4>Bookings</h4>
+      <ul class="list-group">
+        <li
+            class="list-group-item list-group-item-action cursor-pointer"
+            *ngFor="let booking of currentCustomerBookings; let i = index"
+        >
+        Date : {{ booking.bookedAt | date }} - Spot Number : {{ booking.spot }}
+        </li>
+        </ul>
+    </div>
+</div>
